@@ -749,10 +749,9 @@ static void process_im_vibrate(PurpleConnection *gc, guint8 *data, gint len)
 		qq_im_fmt_free(fmt);
 	} 
 	serv_got_im(gc, who, msg_utf8, 0, (time_t) im_text.send_time);
-
 	g_free(msg_utf8);
 	g_free(who);
-	g_string_free (msg, TRUE);
+	g_string_free (msg, FALSE);
 
 }
 
@@ -936,7 +935,7 @@ static void process_im_text(PurpleConnection *gc, guint8 *data, gint len, qq_im_
 
 	g_free(msg_utf8);
 	g_free(who);
-	g_string_free (im_text.msg, TRUE);
+	g_string_free (im_text.msg, FALSE);
 }
 
 /* it is a normal IM, maybe text or video request */
